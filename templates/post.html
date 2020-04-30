@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block post %}
+    <div>
+        <nav>
+            <div class="nav_bar">
+                <div class="nav_bar_center">
+                    <ul id="nav-mobile" class="left">
+                        <li> <img src="{% static 'icons/kodland.svg' %}"/> </li>
+                        <li class="blog"> <p class="blog"> Блог / Добавить статью </p>  </li>
+                    </ul>
+                </div>
+                <ul class="right">
+                    <li> <a> <img src="{% static 'icons/login.svg' %}"/> </a></li>
+                    <li>     <img src="{% static 'icons/user.svg' %}"/>  </li>
+                    <li> <a> <img src="{% static 'icons/logout.svg' %}"/> </a></li>
+                 </ul>
+            </div>
+        </nav>
+        <div class="add-article-heading">
+            <h1> Добавить статью</h1>
+        </div>
+        <form class="form-container" method="post" enctype=multipart/form-data>{% csrf_token %}
+            <p class="forms-errors">{{ form.errors }}</p>
+            <ul>
+                <li class="form-title">  {{ form.title }} </li>
+                <li> <input class="form-submit-button" type="submit" value="Опубликовать"> </li>
+            </ul>
+            <ul>
+                <li class="form-text"> {{ form.text }} </li>
+                <li>
+                    <div class="form-image-container">
+                        <p>Загрузить изображение</p>
+                        <p class="choose_file"> {{ form.image }} {{ form.image.label }} </p>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+
+{% endblock post %}

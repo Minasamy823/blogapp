@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+    {% load static %}
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}" type="text/css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<html>
+    <head>
+        <title>Home page</title>
+        {{ form.media }}
+    </head>
+
+    <body>
+    {% block content %}{% endblock content %}
+    {% block post %}{% endblock post %}
+    </body>
+</html>

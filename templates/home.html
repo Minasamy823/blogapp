@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div>
+        <nav>
+            <div class="nav_bar">
+                <div class="nav_bar_center">
+                    <ul id="nav-mobile" class="left">
+                        <li><img src="{% static 'icons/kodland.svg' %}"/></li>
+                        <li class="blog"><p class="blog"> Блог </p></li>
+                    </ul>
+                </div>
+                <ul class="right">
+                    <li><a> <img src="{% static 'icons/login.svg' %}"/> </a></li>
+                    <li><img src="{% static 'icons/user.svg' %}"/></li>
+                    <li><a> <img src="{% static 'icons/logout.svg' %}"/> </a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="new">
+            <ul>
+                <li> NEW</li>
+                <li><img src="{% static 'icons/like.svg' %}"/> 23</li>
+                <li><img src="{% static 'icons/comment.svg' %}"/> 25</li>
+                <li><img src="{% static 'icons/view.svg' %}"/> 26</li>
+            </ul>
+        </div>
+        <div class="newest-article">
+            <div style="display: flex; flex-direction: row">
+                <div>
+                    <h class="newest-article-title"> {{ super_article.title }} </h>
+                    <p class="newest-article-text"> {{ super_article.text|safe }} </p>
+                    <button class="waves-effect waves-light btn-large light-blue darken-4 read-button"> Read</button>
+                </div>
+                <div>
+                    <img src="{{ super_article.image.url }}"/>
+                </div>
+            </div>
+        </div>
+        <div class="main-articles-headings">
+            <h class="main-articles-left">Другие статьи</h>
+            <ul class="right hide-on-med-and-down">
+                <li><img src="{% static 'icons/filter.svg' %}"/></li>
+            </ul>
+        </div>
+        <div>
+            <div id="articels">
+                <div class="container">
+                    <div class="row">
+                        {% for article in articles%}
+                            <div class="col s12 m4">
+                                <div class="card">
+                                    <div class="date">
+                                        <h href="">30 / 04 / 2020</h>
+                                    </div>
+                                    <div class="card-image">
+                                        <img src="{{ article.image.url }}">
+                                    </div>
+                                    <div class="card-content">
+                                        <p class="card-article-title">{{ article.title }}.</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a><img src="{% static 'icons/like.svg' %}"/> 23</a>
+                                         <a><img src="{% static 'icons/comment.svg' %}"/> 23</a>
+                                         <a class="right"><img src="{% static 'icons/view.svg' %}"/> 23</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    </div>
+{% endblock content %}
+
