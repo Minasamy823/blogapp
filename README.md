@@ -6,7 +6,7 @@
 
     pip install -r requirements.txt
 
-    #Configure the database:
+    # Configure the database:
     
     DATABASES = {
             'default': {
@@ -18,16 +18,16 @@
                 'PORT': '5432',
                 }
           }
-     #Configure migrations
+     # Configure migrations
 
          python manage.py makemigrations
          python manage.py migrate
 
-     #Initiate data
+     # Initiate data
 
          python manage.py init-data
 
-     #runserver on the localhost
+     # runserver on the localhost
 
          python manage.py runserver
 
