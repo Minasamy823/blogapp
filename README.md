@@ -18,16 +18,17 @@
         'PORT': '5432',
     }
 }
- #Configure migrations
- 
- python manage.py makemigrations
- python manage.py migrate
- 
- #Initiate data
- 
- python manage.py init-data
- 
- #runserver on the localhost
- 
- python manage.py runserver
+
+     #Configure migrations
+
+         python manage.py makemigrations
+         python manage.py migrate
+
+     #Initiate data
+
+         python manage.py init-data
+
+     #runserver on the localhost
+
+         python manage.py runserver
 
