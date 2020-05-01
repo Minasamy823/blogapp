@@ -1,20 +1,27 @@
 from PIL import Image
 from django import forms
-from django.forms import TextInput
+from django.forms import FileInput, TextInput
 
 from .models import Blog
 from django.utils.translation import ugettext as _
 
 
 class ArticleForm(forms.ModelForm):
-    image = forms.FileField(label='Выбрать')
-
     class Meta:
         model = Blog
         exclude = ('published_at',)
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Введите название статьи'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(ArticleForm, self).__init__(*args, **kwargs)
+        self.fields['image'].widget = FileInput(attrs={
+            'id': 'go',
+            'onchange': 'readURL(this)',
+            'class': 'choose_file',
+            'Placeholder': 'Upload'
+        })
 
     def clean_image(self):
         image = self.cleaned_data.get('image', False)

@@ -8,8 +8,11 @@ from django.views.generic.edit import FormView
 # Create your views here.
 def ViewArticles(request):
     template_name = 'home.html'
-    articles = Blog.objects.order_by('-published_at')[:10]
-    super_article = Blog.objects.all().last()
+    try:
+        articles = Blog.objects.order_by('-published_at')[:10]
+        super_article = Blog.objects.order_by('-published_at')[0]
+    except IndexError:
+        super_article, articles = None, None
     context = {'articles': articles, 'super_article': super_article}
     return render(request, template_name, context)
 
@@ -22,4 +25,4 @@ class PostArticles(FormView):
     def form_valid(self, form):
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('home')
+            return super(PostArticles, self).form_valid(form)

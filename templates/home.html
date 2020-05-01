@@ -25,18 +25,26 @@
                 <li><img src="{% static 'icons/view.svg' %}"/> 26</li>
             </ul>
         </div>
-        <div class="newest-article">
-            <div style="display: flex; flex-direction: row">
-                <div>
-                    <h class="newest-article-title"> {{ super_article.title }} </h>
-                    <p class="newest-article-text"> {{ super_article.text|safe }} </p>
-                    <button class="waves-effect waves-light btn-large light-blue darken-4 read-button"> Read</button>
+        <div class="container">
+            <div class="newest-article row">
+                <div class="newest-article-description col m6">
+                    <div>
+                        <h class="newest-article-title"> {{ super_article.title }} </h>
+                    </div>
+                    <div><p class="newest-article-text"> {{ super_article.text|safe }} </p></div>
+                    <div>
+                        <button class="left read-button"> Читать</button>
+                    </div>
                 </div>
-                <div>
-                    <img src="{{ super_article.image.url }}"/>
+                <div class=" col m6">
+                    <div class="super-article-image">
+                        <img class="" src="{{ super_article.image.url }}"/>
+                    </div>
                 </div>
             </div>
+
         </div>
+        <hr/>
         <div class="main-articles-headings">
             <h class="main-articles-left">Другие статьи</h>
             <ul class="right hide-on-med-and-down">
@@ -47,11 +55,11 @@
             <div id="articels">
                 <div class="container">
                     <div class="row">
-                        {% for article in articles%}
+                        {% for article in articles %}
                             <div class="col s12 m4">
                                 <div class="card">
                                     <div class="date">
-                                        <h href="">30 / 04 / 2020</h>
+                                        <h href="">{{ article.published_at|date:"y, m, d" }}</h>
                                     </div>
                                     <div class="card-image">
                                         <img src="{{ article.image.url }}">
@@ -61,8 +69,8 @@
                                     </div>
                                     <div class="card-action">
                                         <a><img src="{% static 'icons/like.svg' %}"/> 23</a>
-                                         <a><img src="{% static 'icons/comment.svg' %}"/> 23</a>
-                                         <a class="right"><img src="{% static 'icons/view.svg' %}"/> 23</a>
+                                        <a><img src="{% static 'icons/comment.svg' %}"/> 23</a>
+                                        <a class="right"><img src="{% static 'icons/view.svg' %}"/> 23</a>
                                     </div>
                                 </div>
                             </div>
@@ -72,12 +80,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
     </div>
 {% endblock content %}
 

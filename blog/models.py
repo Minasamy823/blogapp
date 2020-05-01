@@ -1,9 +1,7 @@
 from django.utils import timezone
 from tinymce.models import HTMLField
 from django.db import models
-
 from django.contrib.auth.models import User
-# Create your models here.
 
 
 class Blog(models.Model):
